@@ -6,8 +6,10 @@ class PostImagesController < ApplicationController
   def create
     @post_image = PostImage.new(post_image_params)
     @post_image.user_id = current_user.id
+    # 保存できた場合
     if @post_image.save
       redirect_to post_images_path
+    # 保存できなかった場合
     else
       render :new
     end
